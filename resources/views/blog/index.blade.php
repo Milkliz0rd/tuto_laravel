@@ -12,7 +12,7 @@
       <h2>{{ $post->title }}</h2>
       <p>{{ $post->content }}</p>
       <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-2">
-      <a href="{{ route('blog.show', ['slug' => $post->slug, 'id' => $post->id]) }}">Lire la suite</a>
+      <a href="{{ route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">Lire la suite</a>
       </button>
     </article>
   @endforeach

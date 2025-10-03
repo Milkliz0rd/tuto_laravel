@@ -20,12 +20,12 @@ Route::get('/', function () {
 });
 
 Route::prefix('/blog')->controller(BlogController::class)->name("blog.")->group(function () {
-
     Route::get('/','index' )->name('index');
-    Route::get('/{slug}-{id}','show')->where([
-    'slug' => '[a-z0-9\-]+',
-    'id' => '[0-9]+',
-])->name('show');
-
+    
+    Route::get('/{slug}-{post}','show')->where([
+        'slug' => '[a-z0-9\-]+',
+        'post' => '[0-9]+',
+    ])->name('show');
+        
 });
 
