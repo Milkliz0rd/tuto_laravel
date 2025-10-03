@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormPostRequest;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Contracts\View\View;
 
 
@@ -13,6 +14,13 @@ class BlogController extends Controller
     // Liste des articles (page d'accueil du blog)
     public function index(): View
     {
+        // $post = Post::find(2);
+        // $post->tags()->createMany([
+        //     ['name' => 'Tag1'],
+        //     ['name' => 'Tag2'],
+        //     ['name' => 'Tag3'],
+        // ]);
+
         return view('blog.index', [
             'posts' => Post::oldest()->paginate(3) //paginate(6) permet de paginer les résultats par 6
         ]);
