@@ -13,13 +13,20 @@
     <li>
       <a @class(["font-extrabold text-xl" => (request()->route()->getName()==='blog.index')])  href="{{ route('blog.index') }}">Blog</a>
     </li>
-    <li><a href="#">Article</a></li>
+    <li><a @class(["font-extrabold text-xl" => (request()->route()->getName()==='blog.create')])  href="{{ route('blog.create') }}">Créer un article</a></li>
     <li><a href="#">Contact</a></li>
     <li><a href="#">A propos</a></li>
   </nav>
 </div>
 
   <div class="container mx-auto p-4 flex flex-col gap-4">
+    @if (session('success'))
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Succès!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+      </div>
+    @endif
+    
     @yield('content')
   </div>
 

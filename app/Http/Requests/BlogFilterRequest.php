@@ -28,11 +28,11 @@ class BlogFilterRequest extends FormRequest
         ];
     }
 
-    protected function prepareForValidation()
+    protected function prepareForValidation() //ajoute le slug si il n'est pas fourni
     {
-        $this->merge([
+        $this->merge([ //merge permet de fusionner les données existantes avec les nouvelles
 
-            "slug" => $this->input('slug') ?: Str::slug($this->input('title')),
+            "slug" => $this->input('slug') ?: Str::slug($this->input('title')), //si le slug n'est pas fourni, on le génère à partir du titre
         ]);
     }
 }

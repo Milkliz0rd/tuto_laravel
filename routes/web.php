@@ -21,7 +21,10 @@ Route::get('/', function () {
 
 Route::prefix('/blog')->controller(BlogController::class)->name("blog.")->group(function () {
     Route::get('/','index' )->name('index');
-    
+    Route::get('/new', 'create')->name('create');
+    Route::post('/new', 'store');
+    Route::get('/{post}/edit', 'edit')->name('edit');
+    Route::post('/{post}/edit', 'update');
     Route::get('/{slug}-{post}','show')->where([
         'slug' => '[a-z0-9\-]+',
         'post' => '[0-9]+',
